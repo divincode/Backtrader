@@ -250,6 +250,7 @@ class BackBroker(bt.BrokerBase):
 
     def __init__(self):
         super(BackBroker, self).__init__()
+        self._pchildren = collections.defaultdict(collections.deque)
         self._userhist = []
         self._fundhist = []
         # share_value, net asset value
@@ -278,7 +279,6 @@ class BackBroker(bt.BrokerBase):
         self.submitted = collections.deque()
 
         # to keep dependent orders if needed
-        self._pchildren = collections.defaultdict(collections.deque)
 
         self._ocos = dict()
         self._ocol = collections.defaultdict(list)
